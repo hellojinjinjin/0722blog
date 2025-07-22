@@ -122,3 +122,5 @@ user_type = pd.melt(df,
 
 user_type.groupby(['season', 'user_type'])['user_count'].mean()
 ```
+
+..
