@@ -1,0 +1,323 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"0722\"\n",
+        "author: \"j\"\n",
+        "date: now\n",
+        "categories: [python] \n",
+        "---\n",
+        "\n",
+        "# \\[실습\\] 날짜형, 문자형 다루기 연습 - 자전거 시스템의 대여 기록"
+      ],
+      "id": "4caf23f9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "print(df.head())\n",
+        "\n",
+        "df.head(2)\n",
+        "df.info()\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})"
+      ],
+      "id": "22ea17d3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 1. 계절(season) == 1일 때, 가장 대여량이 많은 시간대(hour)을 구하시오."
+      ],
+      "id": "60da7f7a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})\n",
+        "\n",
+        "spring = df['season'] == 1\n",
+        "spring_count = df[spring][['datetime','count']]\n",
+        "\n",
+        "spring_count['datetime'].dt.hour\n",
+        "df['hour'] = df['datetime'].dt.hour\n",
+        "spring_count = df[spring][['hour','count']]\n",
+        "\n",
+        "hour_count = spring_count.groupby('hour')['count'].sum()\n",
+        "\n",
+        "hour_count.idxmax()     # 가장 높은 대여량 시간\n",
+        "hour_count.max()      # 가장 높은 대여량\n",
+        "\n",
+        "# 최대 count 행\n",
+        "count_max = spring_count.loc[spring_count['count'].idxmax()]\n",
+        "\n",
+        "count_max['hour']\n",
+        "count_max['count']"
+      ],
+      "id": "723ded13",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 2. 각 계절(season)별 평균 대여량(count)을 구하시오."
+      ],
+      "id": "0b5530bf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "\n",
+        "df.groupby('season')['count'].mean()"
+      ],
+      "id": "1bf294b1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 3. 특정 달(month) 동안의 총 대여량(count)을 구하시오."
+      ],
+      "id": "64b03f14"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})\n",
+        "\n",
+        "df['month'] = df['datetime'].dt.month\n",
+        "\n",
+        "month_count = df[['month','count']]\n",
+        "\n",
+        "month_count.groupby('month')['count'].sum()"
+      ],
+      "id": "91dc5755",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 4. 가장 대여량이 많은 날짜를 구하시오."
+      ],
+      "id": "98aca9a7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})\n",
+        "\n",
+        "df['date'] = df['datetime'].dt.date\n",
+        "\n",
+        "date_count = df.groupby('date')['count'].sum()\n",
+        "\n",
+        "df.loc[df['date'] == date_count.idxmax()]\n",
+        "date_count.max()"
+      ],
+      "id": "cf28430e",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 5. 시간대(hour)별 평균 대여량(count)을 구하시오."
+      ],
+      "id": "2f51aaa8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})\n",
+        "df['hour'] = df['datetime'].dt.hour\n",
+        "df.groupby('hour')['count'].mean()"
+      ],
+      "id": "0356c5ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 6. 특정 요일(weekday) 동안의 총 대여량(count)을 구하시오."
+      ],
+      "id": "b563e228"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})\n",
+        "\n",
+        "weekday = df['workingday'] == 1\n",
+        "\n",
+        "\n",
+        "df[weekday]['count'].sum()\n",
+        "\n",
+        "df['weekday'] = df['datetime'].dt.day_name()\n",
+        "\n",
+        "df[df['weekday'] == 'Monday']['count'].sum()\n",
+        "df[df['weekday'] == 'Tuesday']['count'].sum()\n",
+        "df[df['weekday'] == 'Wednesday']['count'].sum()\n",
+        "df[df['weekday'] == 'Thursday']['count'].sum()\n",
+        "df[df['weekday'] == 'Friday']['count'].sum()"
+      ],
+      "id": "493b8fb7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 7. 주어진 Bike Sharing 데이터를 사용하여 넓은 형식(wide format)에서 긴 형식(long format)으로 변환하시오. casual과 registered 열을 하나의 열로 변환하고, 각 기록의 대여 유형과 대여 수를 포함하는 긴 형식 데이터프레임을 만드시오.\n",
+        "\n",
+        "### melt를 사용하여 변환된 데이터프레임:"
+      ],
+      "id": "3ac4ffff"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})\n",
+        "\n",
+        "pd.melt(df,\n",
+        "        id_vars = ['datetime', 'season'],\n",
+        "        value_vars= ['casual', 'registered'],\n",
+        "        var_name='user_type',\n",
+        "        value_name='user_count'\n",
+        "       )"
+      ],
+      "id": "f897ccb3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 8. 이전에 생성한 긴 형식 데이터프레임을 활용하여 각 계절(season)별로 casual과 registered 사용자의 평균 대여 수(count)를 구하시오.\n",
+        "\n",
+        "### 각 계절별 user_type의 평균 대여 수:"
+      ],
+      "id": "2807bcde"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv('./data/bike_data.csv')\n",
+        "\n",
+        "df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n",
+        "                'season' : 'object', 'workingday' : 'object', \n",
+        "                'holiday' : 'object'})\n",
+        "\n",
+        "user_type = pd.melt(df, \n",
+        "                    id_vars = ['datetime', 'season'],\n",
+        "                    value_vars= ['casual', 'registered'],\n",
+        "                    var_name='user_type',\n",
+        "                    value_name='user_count'\n",
+        "                    )\n",
+        "\n",
+        "user_type.groupby(['season', 'user_type'])['user_count'].mean()"
+      ],
+      "id": "19f9b543",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        ".."
+      ],
+      "id": "7be14af6"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\USER\\.conda\\envs\\ls-gen5\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
