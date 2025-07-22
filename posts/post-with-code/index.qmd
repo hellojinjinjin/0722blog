@@ -1,0 +1,9 @@
+---
+title: "Post With Code"
+author: "Harlow Malloc"
+date: "2025-07-22"
+categories: [news, code, analysis] # 태그
+image: "https://upload.wikimedia.org/wikipedia/commons/9/98/%EC%98%88%EC%A0%9C.png" # 블로그 커버 이미지(글 이미지 아님), 링크로도 가능, 같은 폴더 내 저장된 이미지도 가능. (지금 같은 경우에는 한 폴더 안에 image.jpg 라는 파일이 있었기에, 바로 image.jpg 만 기입해도 해당 이미지로 설정 가능)
+---
+
+블로그 사진을 바꿔봤습니다.

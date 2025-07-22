@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: docs # 추가
+
+website:
+  title: "0722blog of Jin" 
+  navbar: # 네이게이션 바(블로그 글 카테고리)
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/hellojinjinjin
+format:
+  html:
+    theme:
+      - minty
+      - brand
+    css: styles.css
+
+
+
+# 전체 블로그를 관리하는 파일
+
+# 저장 후 index.qmd로 가서 프리뷰하면 바뀐거 확인가능
+

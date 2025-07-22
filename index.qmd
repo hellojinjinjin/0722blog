@@ -1,0 +1,14 @@
+---
+title: ""
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true # 카테고리창
+  sort-ui: true # 정렬방식창
+  filter-ui: true # 검색창
+page-layout: full # 전체 페이지 크기 조절
+title-block-banner: true
+---
+
+

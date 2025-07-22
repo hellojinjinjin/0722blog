@@ -1,0 +1,21 @@
+---
+title: "Jin" # 이름 써봄
+image: https://media.istockphoto.com/id/2151942528/ko/%EC%82%AC%EC%A7%84/handmade-purple-yellow-flower-on-white-background.jpg?s=612x612&w=0&k=20&c=0yGkn1pqrBjQeK6hLOfbfoR6ih8XPVIk7C4J80TMdkA=
+about:
+  template: jolla # 템플릿 변경
+  links: # 각각에 대응되는 것들 확인 가능
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com/hellojinjinjin
+
+---
+
+만들어봤습니다.
+
+
+<!-- about.qmd는 블로그 첫 페이지에 어바웃을 눌렀을 때 뜨는 창 -->
+
+<!-- 만약 안바뀐다면, 기존 quarto preview 창을 닫고 다시 한번 시도해보기 -->
