@@ -26,6 +26,13 @@ df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64',
 ### 1. 계절(season) == 1일 때, 가장 대여량이 많은 시간대(hour)을 구하시오.
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 spring = df['season'] == 1
 spring_count = df[spring][['datetime','count']]
 
@@ -48,12 +55,26 @@ count_max['count']
 ### 2. 각 계절(season)별 평균 대여량(count)을 구하시오.
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 df.groupby('season')['count'].mean()
 ```
 
 ### 3. 특정 달(month) 동안의 총 대여량(count)을 구하시오.
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 df['month'] = df['datetime'].dt.month
 
 month_count = df[['month','count']]
@@ -64,6 +85,13 @@ month_count.groupby('month')['count'].sum()
 ### 4. 가장 대여량이 많은 날짜를 구하시오.
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 df['date'] = df['datetime'].dt.date
 
 date_count = df.groupby('date')['count'].sum()
@@ -75,12 +103,26 @@ date_count.max()
 ### 5. 시간대(hour)별 평균 대여량(count)을 구하시오.
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 df.groupby('hour')['count'].mean()
 ```
 
 ### 6. 특정 요일(weekday) 동안의 총 대여량(count)을 구하시오.
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 weekday = df['workingday'] == 1
 
 
@@ -100,6 +142,13 @@ df[df['weekday'] == 'Friday']['count'].sum()
 ### melt를 사용하여 변환된 데이터프레임:
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 pd.melt(df,
         id_vars = ['datetime', 'season'],
         value_vars= ['casual', 'registered'],
@@ -113,6 +162,13 @@ pd.melt(df,
 ### 각 계절별 user_type의 평균 대여 수:
 
 ```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+
+
 user_type = pd.melt(df, 
                     id_vars = ['datetime', 'season'],
                     value_vars= ['casual', 'registered'],
