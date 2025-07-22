@@ -1,0 +1,124 @@
+---
+title: "0722"
+author: "j"
+date: now
+categories: [python] 
+---
+
+# \[실습\] 날짜형, 문자형 다루기 연습 - 자전거 시스템의 대여 기록
+
+```{python}
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv('./data/bike_data.csv')
+print(df.head())
+
+df.head(2)
+df.info()
+
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
+```
+
+### 1. 계절(season) == 1일 때, 가장 대여량이 많은 시간대(hour)을 구하시오.
+
+```{python}
+spring = df['season'] == 1
+spring_count = df[spring][['datetime','count']]
+
+spring_count['datetime'].dt.hour
+df['hour'] = df['datetime'].dt.hour
+spring_count = df[spring][['hour','count']]
+
+hour_count = spring_count.groupby('hour')['count'].sum()
+
+hour_count.idxmax()     # 가장 높은 대여량 시간
+hour_count.max()      # 가장 높은 대여량
+
+# 최대 count 행
+count_max = spring_count.loc[spring_count['count'].idxmax()]
+
+count_max['hour']
+count_max['count']
+```
+
+### 2. 각 계절(season)별 평균 대여량(count)을 구하시오.
+
+```{python}
+df.groupby('season')['count'].mean()
+```
+
+### 3. 특정 달(month) 동안의 총 대여량(count)을 구하시오.
+
+```{python}
+df['month'] = df['datetime'].dt.month
+
+month_count = df[['month','count']]
+
+month_count.groupby('month')['count'].sum()
+```
+
+### 4. 가장 대여량이 많은 날짜를 구하시오.
+
+```{python}
+df['date'] = df['datetime'].dt.date
+
+date_count = df.groupby('date')['count'].sum()
+
+df.loc[df['date'] == date_count.idxmax()]
+date_count.max()
+```
+
+### 5. 시간대(hour)별 평균 대여량(count)을 구하시오.
+
+```{python}
+df.groupby('hour')['count'].mean()
+```
+
+### 6. 특정 요일(weekday) 동안의 총 대여량(count)을 구하시오.
+
+```{python}
+weekday = df['workingday'] == 1
+
+
+df[weekday]['count'].sum()
+
+df['weekday'] = df['datetime'].dt.day_name()
+
+df[df['weekday'] == 'Monday']['count'].sum()
+df[df['weekday'] == 'Tuesday']['count'].sum()
+df[df['weekday'] == 'Wednesday']['count'].sum()
+df[df['weekday'] == 'Thursday']['count'].sum()
+df[df['weekday'] == 'Friday']['count'].sum()
+```
+
+### 7. 주어진 Bike Sharing 데이터를 사용하여 넓은 형식(wide format)에서 긴 형식(long format)으로 변환하시오. casual과 registered 열을 하나의 열로 변환하고, 각 기록의 대여 유형과 대여 수를 포함하는 긴 형식 데이터프레임을 만드시오.
+
+### melt를 사용하여 변환된 데이터프레임:
+
+```{python}
+pd.melt(df,
+        id_vars = ['datetime', 'season'],
+        value_vars= ['casual', 'registered'],
+        var_name='user_type',
+        value_name='user_count'
+       )
+```
+
+### 8. 이전에 생성한 긴 형식 데이터프레임을 활용하여 각 계절(season)별로 casual과 registered 사용자의 평균 대여 수(count)를 구하시오.
+
+### 각 계절별 user_type의 평균 대여 수:
+
+```{python}
+user_type = pd.melt(df, 
+                    id_vars = ['datetime', 'season'],
+                    value_vars= ['casual', 'registered'],
+                    var_name='user_type',
+                    value_name='user_count'
+                    )
+
+user_type.groupby(['season', 'user_type'])['user_count'].mean()
+```
