@@ -7,25 +7,11 @@
     "text": "안녕하세요!"
   },
   {
-    "objectID": "posts/intro/index.html",
-    "href": "posts/intro/index.html",
-    "title": "intro",
+    "objectID": "posts/introduce_myself/index.html",
+    "href": "posts/introduce_myself/index.html",
+    "title": "introduce_myself",
     "section": "",
-    "text": "나의 첫 블로그 입니다. 첫 글을 한번 써봤습니다. ."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "0722blog of Jin",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n0722\n\n\n\npython\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nj\n\n\n\n\n\n\n\n\n\n\n\n\nintro\n\n\n\nhello\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nj\n\n\n\n\n\n\n\n\n\n\n\n\nintroduce_myself\n\n\n\nhello\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nj\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog 2\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nJin\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Jin",
-    "section": "",
-    "text": "만들어봤습니다."
+    "text": "안녕하세요 자기소개를 해보겠습니다. 떨리는 숙제군요. 일단 그냥 주절주절 써보겠습니다.\n이름은 진소현입니다. 나이는 워낙 기준이 많아져서 이젠 몇살이라고 해야할지 모르겠지만, 일단 95년에 태어났습니다. 아까 누가 물어긴하던데 14학번입니다. 신소재를 전공하긴했는데, 잘 모릅니다. 열심히 하려곤 했었지만 쉽지않았습니다.\n대구에서 왔습니다. 대구에서 오래 살았지만, 잘 모릅니다. 모르는게 많아 보이네요. 어쨌든, 대구에서 왔다고 하니까 대구 진짜 많이 덥냐고 많이 물어보시던데, 일단 여름이면 어디든 다 더운 것 같습니다. 근데 일단 이번주 대구 체감기온이 37도라고 뜨더라구요. 진짜 많이 더울 것 같습니다.\n좋아하는게 뭐냐는 질문이 사실 제일 어렵습니다. 진득하게 오래 못하는 성격이라 얇게 파고 어려워지면 흥미가 떨어져서 더 알려하지 않습니다. 파이썬은 안그랬으면 좋겠는데, 솔직히는 스스로한테 의심이 큽니다. 그래도, 어릴때부터 누워있는건 꾸준히 좋아했습니다. 이걸로 국대되고 올림픽도 나가보고 싶은데, 경쟁이 굉장할 것 같긴 합니다.\n가장 무언가를 꾸준히 해 본 경험은 운동입니다. 태권도 사범자격이 있습니다. 연수도 받긴 해야하는데, 흥미가 떨어져 가진 않았습니다. 지금 생각해보니, 쉽게 질리는 것에 대해서는 한결같이 꾸준히 잘 하는 것 같습니다.\n쓰다보니 글이 길어지는 것 같아서 그만 써보려합니다. 그래도 될까요?\n읽어주셔서 감사합니다."
   },
   {
     "objectID": "posts/0722/index.html",
@@ -35,17 +21,31 @@
     "text": "[실습] 날짜형, 문자형 다루기 연습 - 자전거 시스템의 대여 기록\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\nprint(df.head())\n\ndf.head(2)\ndf.info()\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\n\n              datetime  season  holiday  workingday  weather   temp   atemp  \\\n0  2011-09-05 17:00:00       3        1           0        2  27.06  29.545   \n1  2011-05-17 11:00:00       2        0           1        2  22.96  26.515   \n2  2011-11-10 09:00:00       4        0           1        2  17.22  21.210   \n3  2011-10-13 07:00:00       4        0           1        3  22.14  25.760   \n4  2011-10-15 14:00:00       4        0           0        1  24.60  31.060   \n\n   humidity  windspeed  casual  registered  count  \n0        89     7.0015      37          77    114  \n1        83    27.9993      26         104    130  \n2        94     7.0015      23         188    211  \n3       100     8.9981       5          76     81  \n4        33    31.0009     242         230    472  \n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 435 entries, 0 to 434\nData columns (total 12 columns):\n #   Column      Non-Null Count  Dtype  \n---  ------      --------------  -----  \n 0   datetime    435 non-null    object \n 1   season      435 non-null    int64  \n 2   holiday     435 non-null    int64  \n 3   workingday  435 non-null    int64  \n 4   weather     435 non-null    int64  \n 5   temp        435 non-null    float64\n 6   atemp       435 non-null    float64\n 7   humidity    435 non-null    int64  \n 8   windspeed   435 non-null    float64\n 9   casual      435 non-null    int64  \n 10  registered  435 non-null    int64  \n 11  count       435 non-null    int64  \ndtypes: float64(3), int64(8), object(1)\nmemory usage: 40.9+ KB\n\n\n\n1. 계절(season) == 1일 때, 가장 대여량이 많은 시간대(hour)을 구하시오.\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\n\nspring = df['season'] == 1\nspring_count = df[spring][['datetime','count']]\n\nspring_count['datetime'].dt.hour\ndf['hour'] = df['datetime'].dt.hour\nspring_count = df[spring][['hour','count']]\n\nhour_count = spring_count.groupby('hour')['count'].sum()\n\nhour_count.idxmax()     # 가장 높은 대여량 시간\nhour_count.max()      # 가장 높은 대여량\n\n# 최대 count 행\ncount_max = spring_count.loc[spring_count['count'].idxmax()]\n\ncount_max['hour']\ncount_max['count']\n\n597\n\n\n\n\n2. 각 계절(season)별 평균 대여량(count)을 구하시오.\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\n\ndf.groupby('season')['count'].mean()\n\nseason\n1    103.169811\n2    218.803922\n3    265.500000\n4    218.581197\nName: count, dtype: float64\n\n\n\n\n3. 특정 달(month) 동안의 총 대여량(count)을 구하시오.\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\n\ndf['month'] = df['datetime'].dt.month\n\nmonth_count = df[['month','count']]\n\nmonth_count.groupby('month')['count'].sum()\n\nmonth\n1      2567\n2      4849\n3      3520\n4      5911\n5     10082\n6      6325\n7      8517\n8     10480\n9     10208\n10    10574\n11     6631\n12     8369\nName: count, dtype: int64\n\n\n\n\n4. 가장 대여량이 많은 날짜를 구하시오.\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\n\ndf['date'] = df['datetime'].dt.date\n\ndate_count = df.groupby('date')['count'].sum()\n\ndf.loc[df['date'] == date_count.idxmax()]\ndate_count.max()\n\n1398\n\n\n\n\n5. 시간대(hour)별 평균 대여량(count)을 구하시오.\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\ndf['hour'] = df['datetime'].dt.hour\ndf.groupby('hour')['count'].mean()\n\nhour\n0      43.500000\n1      52.714286\n2      32.842105\n3      12.000000\n4       6.687500\n5      17.750000\n6      58.705882\n7     208.937500\n8     483.055556\n9     260.117647\n10    144.130435\n11    182.000000\n12    277.533333\n13    290.600000\n14    266.842105\n15    255.666667\n16    373.052632\n17    519.200000\n18    447.769231\n19    322.103448\n20    210.083333\n21    196.619048\n22    113.560000\n23     77.352941\nName: count, dtype: float64\n\n\n\n\n6. 특정 요일(weekday) 동안의 총 대여량(count)을 구하시오.\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\n\nweekday = df['workingday'] == 1\n\n\ndf[weekday]['count'].sum()\n\ndf['weekday'] = df['datetime'].dt.day_name()\n\ndf[df['weekday'] == 'Monday']['count'].sum()\ndf[df['weekday'] == 'Tuesday']['count'].sum()\ndf[df['weekday'] == 'Wednesday']['count'].sum()\ndf[df['weekday'] == 'Thursday']['count'].sum()\ndf[df['weekday'] == 'Friday']['count'].sum()\n\n16315\n\n\n\n\n7. 주어진 Bike Sharing 데이터를 사용하여 넓은 형식(wide format)에서 긴 형식(long format)으로 변환하시오. casual과 registered 열을 하나의 열로 변환하고, 각 기록의 대여 유형과 대여 수를 포함하는 긴 형식 데이터프레임을 만드시오.\n\n\nmelt를 사용하여 변환된 데이터프레임:\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\n\npd.melt(df,\n        id_vars = ['datetime', 'season'],\n        value_vars= ['casual', 'registered'],\n        var_name='user_type',\n        value_name='user_count'\n       )\n\n\n\n\n\n\n\n\ndatetime\nseason\nuser_type\nuser_count\n\n\n\n\n0\n2011-09-05 17:00:00\n3\ncasual\n37\n\n\n1\n2011-05-17 11:00:00\n2\ncasual\n26\n\n\n2\n2011-11-10 09:00:00\n4\ncasual\n23\n\n\n3\n2011-10-13 07:00:00\n4\ncasual\n5\n\n\n4\n2011-10-15 14:00:00\n4\ncasual\n242\n\n\n...\n...\n...\n...\n...\n\n\n865\n2011-04-07 16:00:00\n2\nregistered\n161\n\n\n866\n2011-09-03 22:00:00\n3\nregistered\n96\n\n\n867\n2011-11-12 22:00:00\n4\nregistered\n88\n\n\n868\n2012-04-11 23:00:00\n2\nregistered\n52\n\n\n869\n2012-01-06 09:00:00\n1\nregistered\n237\n\n\n\n\n870 rows × 4 columns\n\n\n\n\n\n8. 이전에 생성한 긴 형식 데이터프레임을 활용하여 각 계절(season)별로 casual과 registered 사용자의 평균 대여 수(count)를 구하시오.\n\n\n각 계절별 user_type의 평균 대여 수:\n\nimport numpy as np\nimport pandas as pd\n\ndf = pd.read_csv('./data/bike_data.csv')\n\ndf = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', \n                'season' : 'object', 'workingday' : 'object', \n                'holiday' : 'object'})\n\nuser_type = pd.melt(df, \n                    id_vars = ['datetime', 'season'],\n                    value_vars= ['casual', 'registered'],\n                    var_name='user_type',\n                    value_name='user_count'\n                    )\n\nuser_type.groupby(['season', 'user_type'])['user_count'].mean()\n\nseason  user_type \n1       casual         14.122642\n        registered     89.047170\n2       casual         48.990196\n        registered    169.813725\n3       casual         55.127273\n        registered    210.372727\n4       casual         29.709402\n        registered    188.871795\nName: user_count, dtype: float64\n\n\n.."
   },
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Jin",
+    "section": "",
+    "text": "만들어봤습니다."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "0722blog of Jin",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n0722\n\n\n\npython\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nj\n\n\n\n\n\n\n\n\n\n\n\n\nintro\n\n\n\nhello\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nj\n\n\n\n\n\n\n\n\n\n\n\n\nintroduce_myself\n\n\n\nhello\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nj\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog 2\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nJin\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/intro/index.html",
+    "href": "posts/intro/index.html",
+    "title": "intro",
+    "section": "",
+    "text": "나의 첫 블로그 입니다. 첫 글을 한번 써봤습니다. ."
+  },
+  {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
     "section": "",
     "text": "블로그 사진을 바꿔봤습니다."
-  },
-  {
-    "objectID": "posts/introduce_myself/index.html",
-    "href": "posts/introduce_myself/index.html",
-    "title": "introduce_myself",
-    "section": "",
-    "text": "안녕하세요 자기소개를 해보겠습니다. 떨리는 숙제군요. 일단 그냥 주절주절 써보겠습니다.\n이름은 진소현입니다. 나이는 워낙 기준이 많아져서 이젠 몇살이라고 해야할지 모르겠지만, 일단 95년에 태어났습니다. 아까 누가 물어긴하던데 14학번입니다. 신소재를 전공하긴했는데, 잘 모릅니다. 열심히 하려곤 했었지만 쉽지않았습니다.\n대구에서 왔습니다. 대구에서 오래 살았지만, 잘 모릅니다. 모르는게 많아 보이네요. 어쨌든, 대구에서 왔다고 하니까 대구 진짜 많이 덥냐고 많이 물어보시던데, 일단 여름이면 어디든 다 더운 것 같습니다. 근데 일단 이번주 대구 체감기온이 37도라고 뜨더라구요. 진짜 많이 더울 것 같습니다.\n좋아하는게 뭐냐는 질문이 사실 제일 어렵습니다. 진득하게 오래 못하는 성격이라 얇게 파고 어려워지면 흥미가 떨어져서 더 알려하지 않습니다. 파이썬은 안그랬으면 좋겠는데, 솔직히는 스스로한테 의심이 큽니다. 그래도, 어릴때부터 누워있는건 꾸준히 좋아했습니다. 이걸로 국대되고 올림픽도 나가보고 싶은데, 경쟁이 굉장할 것 같긴 합니다.\n가장 무언가를 꾸준히 해 본 경험은 운동입니다. 태권도 사범자격이 있습니다. 연수도 받긴 해야하는데, 흥미가 떨어져 가진 않았습니다. 지금 생각해보니, 쉽게 질리는 것에 대해서는 한결같이 꾸준히 잘 하는 것 같습니다.\n쓰다보니 글이 길어지는 것 같아서 그만 써보려합니다. 그래도 될까요?\n읽어주셔서 감사합니다."
   }
 ]
