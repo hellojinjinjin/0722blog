@@ -32,6 +32,9 @@ import pandas as pd
 
 df = pd.read_csv('./data/bike_data.csv')
 
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
 
 spring = df['season'] == 1
 spring_count = df[spring][['datetime','count']]
@@ -74,6 +77,9 @@ import pandas as pd
 
 df = pd.read_csv('./data/bike_data.csv')
 
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
 
 df['month'] = df['datetime'].dt.month
 
@@ -91,6 +97,9 @@ import pandas as pd
 
 df = pd.read_csv('./data/bike_data.csv')
 
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
 
 df['date'] = df['datetime'].dt.date
 
@@ -109,7 +118,10 @@ import pandas as pd
 
 df = pd.read_csv('./data/bike_data.csv')
 
-
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
+df['hour'] = df['datetime'].dt.hour
 df.groupby('hour')['count'].mean()
 ```
 
@@ -122,6 +134,9 @@ import pandas as pd
 
 df = pd.read_csv('./data/bike_data.csv')
 
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
 
 weekday = df['workingday'] == 1
 
@@ -148,6 +163,9 @@ import pandas as pd
 
 df = pd.read_csv('./data/bike_data.csv')
 
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
 
 pd.melt(df,
         id_vars = ['datetime', 'season'],
@@ -168,6 +186,9 @@ import pandas as pd
 
 df = pd.read_csv('./data/bike_data.csv')
 
+df = df.astype({'datetime' : 'datetime64[ns]', 'weather' : 'int64', 
+                'season' : 'object', 'workingday' : 'object', 
+                'holiday' : 'object'})
 
 user_type = pd.melt(df, 
                     id_vars = ['datetime', 'season'],
